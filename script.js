@@ -1,116 +1,118 @@
 const startBtn = document.getElementById('start');
 
 const getQuestionText = document.getElementById('question-text');
-const answerA = document.getElementById('A');
-const answerB = document.getElementById('B');
-const answerC = document.getElementById('C');
-const answerD = document.getElementById('D');
+const answer1 = document.getElementById('1');
+const answer2 = document.getElementById('2');
+const answer3 = document.getElementById('3');
+const answer4 = document.getElementById('4');
 
 
 const begin = document.getElementById('intro');
 const getQuestion = document.getElementById('question');
+const startTimer = document.getElementById('timer');
 const correct = document.getElementById('response');
 const getScore = document.getElementById('all-done');
 const submitInitials = document.getElementById('input-initials');
 const submitBtn = document.getElementById('submit');
-const startTimer = document.getElementById('timer');
 
 
 startBtn.addEventListener('click', startQuiz);
-answerA.addEventListener('click', checkAnswer);
-answerB.addEventListener('click', checkAnswer);
-answerC.addEventListener('click', checkAnswer);
-answerD.addEventListener('click', checkAnswer);
+answer1.addEventListener('click', submitAnswer);
+answer2.addEventListener('click', submitAnswer);
+answer3.addEventListener('click', submitAnswer);
+answer4.addEventListener('click', submitAnswer);
 submitBtn.addEventListener('click', enterInitials);
 
+// Question bank of objects to use for quiz questions.
 const questionBank = [
     {
         question: 'What is the smallest part of an element that retains the properties of that element?',
-        answerA: 'proton',
-        answerB: 'nucleus', 
-        answerC: 'atom',
-        answerD: 'molecule',
-        correct: "C",
+        answer1: 'proton',
+        answer2: 'nucleus', 
+        answer3: 'atom',
+        answer4: 'molecule',
+        correct: 3
     },
     {
         question: 'Which two particles make up the nucleus of an atom?',
-        answerA: 'proton and neutron',
-        answerB: 'boson and megatron', 
-        answerC: 'boson and megatron',
-        answerD: 'positron and negatron',
-        correct: "A",
+        answer1: 'proton and neutron',
+        answer2: 'boson and megatron', 
+        answer3: 'boson and megatron',
+        answer4: 'positron and negatron',
+        correct: 1
     },
     {
         question: 'Which particle is linked to the identity of an atom of an element?',
-        answerA: 'nucleus',
-        answerB: 'proton', 
-        answerC: 'electron',
-        answerD: 'molecule',
-        correct: "B",
+        answer1: 'nucleus',
+        answer2: 'proton', 
+        answer3: 'electron',
+        answer4: 'molecule',
+        correct: 2
     },
     {
         question: 'Which particle is responsible for the chemical properties of an element?',
-        answerA: 'nucleus',
-        answerB: 'proton', 
-        answerC: 'electron',
-        answerD: 'molecule',
-        correct: "C",
+        answer1: 'nucleus',
+        answer2: 'proton', 
+        answer3: 'electron',
+        answer4: 'molecule',
+        correct: 3
     },
 ]
 
-//.textContent replaced content in the header question and .innerText replaced content in the answer buttons
-function showQuestion () {
-    let questions = questionBank[0];
+// Variables to use in the loop to select new questions.
+
+const lastQuestion = questionBank.length - 1;
+let currentQuestion = 0;
+let questions = questionBank[currentQuestion];
+let correctAnswer = questionBank[currentQuestion][5];
+
+//.textContent replaces content in the header question and .innerText appends content in the answer buttons
+let showQuestion = function () {
+
     getQuestionText.textContent = questions.question;
-    answerA.innerText += questions.answerA;
-    answerB.innerText += questions.answerB;
-    answerC.innerText += questions.answerC;
-    answerD.innerText += questions.answerD;
+    answer1.innerText += questions.answer1;
+    answer2.innerText += questions.answer2;
+    answer3.innerText += questions.answer3;
+    answer4.innerText += questions.answer4;
 }
 
-showQuestion()
+function timer() {
+    let secondsLeft = 10;
+    let timerInterval = setInterval(function() {
+        secondsLeft--;
+        startTimer.textContent = secondsLeft;
+
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            console.log("times up")
+            // score function here
+        }
+    }, 1000);
+}
+
 function startQuiz() {
     begin.setAttribute('style', 'display: none');
     getQuestion.setAttribute('style', 'display: block')
-    function timer() {
-        let secondsLeft = 10;
-        let timerInterval = setInterval(function() {
-            secondsLeft--;
-            startTimer.textContent = secondsLeft;
-    
-            if(secondsLeft === 0) {
-                clearInterval(timerInterval);
-                console.log("times up")
-                // score function here
-            }
-        }, 1000);
-    }
+    showQuestion()
     timer()
 }
 
-
-
-function checkAnswer() {
-    if (answerBtn === questionBank[0][4]) {
-        console.log("yippee");
-    } else{
-        console.log('try again');
-    }
-}
+// I cannot figure out how to compare the answer selected with the correct answer from the question object. Every new thing I try seems to get further from what I need it to do.
 
 function submitAnswer() {
+    const btns = document.querySelectorAll('button')
+    btns.forEach(function(btn) {
+        btn.addEventListener('click', btnClick)
+    })
+    function btnClick(e) {
+        console.log(e.target.getAttribute('data-value'))
+    }
     correct.setAttribute('style', 'display: block');
     setTimeout(function(){getQuestion.setAttribute('style', 'display: none');}, 2000);
     setTimeout(function(){getScore.setAttribute('style', 'display: block');}, 2000);
 
-    // store points
-    // while or forEach (?) there are still questions in the array, go to the next question
-    // then there's the do while loop (w3schools)
-    // when no questions remain, go to enterInitials
 }
-
-//check for correct answer
-
+// Ran out of time before I could complete these functions.
 
 function enterInitials() {
     // display score
@@ -119,8 +121,7 @@ function enterInitials() {
 
 
 function highScores() {
-    // post initials on highscores list. see W4A8 for shopping list
-    // try again  (go back to intro) and/or clear scores (remove list)
+    // post initials on highscores list
 }
 
 
