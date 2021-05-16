@@ -12,8 +12,10 @@ const getQuestion = document.getElementById('question');
 const startTimer = document.getElementById('timer');
 const correct = document.getElementById('response');
 const getScore = document.getElementById('all-done');
-const submitInitials = document.getElementById('input-initials');
+const getInitials = document.getElementById('initials');
 const submitBtn = document.getElementById('submit');
+const afterInitials = document.getElementById('input-initials')
+const getScores = document.getElementById('high-scores')
 
 
 startBtn.addEventListener('click', startQuiz);
@@ -21,6 +23,7 @@ answer1.addEventListener('click', submitAnswer);
 answer2.addEventListener('click', submitAnswer);
 answer3.addEventListener('click', submitAnswer);
 answer4.addEventListener('click', submitAnswer);
+
 submitBtn.addEventListener('click', enterInitials);
 
 // Question bank of objects to use for quiz questions.
@@ -116,7 +119,11 @@ function submitAnswer() {
 
 function enterInitials() {
     // display score
-    // request input of initials
+    // user inputs initials
+    afterInitials.setAttribute('style', 'display: none');
+    getScores.setAttribute('style', 'display: block')
+
+
 }
 
 
