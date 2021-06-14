@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"></link>
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
     <title>Chem Quiz</title>
 </head>
@@ -11,8 +12,8 @@
 <body>
 
     <header>
-        <div class="header text" id="currentScore">Your Current Score: </div>
-        <h1 class="header">Chemistry Rules!</h1>
+        <div class="header text" id="currentScore">Your Current Score:</div>
+        <h1 class="header">Chemistry Rules <i class="fas fa-flask"></i></h1>
         <div class="header text" id="timer">Time Remaining:</div>
     </header>
     
@@ -22,7 +23,7 @@
 
             <div class="box" id="begin-quiz">
                 <h2 class="box-top">Take the Chem-Quiz</h2>
-                <div class="text" id="intro"></div>
+                <div class="text" id="intro">How much do you remember from high school chemistry? Challenge yourself to answer these four questions about the structure of matter in less than 100 seconds. Beat the clock!</div>
                 <button class="buttons" id="start">Start</button>
 
             </div>
@@ -33,7 +34,7 @@
                 <button class="buttons answers" id="B"> B:  </button>
                 <button class="buttons answers" id="C"> C:  </button>
                 <button class="buttons answers" id="D"> D:  </button>
-                <div class="text hide" id="correct">Correct!</div>
+                <div class="text hide" id="correct"></div>
             </div>
 
             <div class="box hide" id="all-done">
@@ -52,7 +53,7 @@
                 <h2 class="box-top">High Scores</h2>
                 <ul class="text" id="score-list"></ul>
                 <div>
-                    <button class="buttons" id="go-back">Try Again!</button>
+                    <button class="buttons" id="try-again">Try Again!</button>
                     <button class="buttons" id="clear-scores">Clear High Scores</button>
                 </div>
             </div>
@@ -60,6 +61,8 @@
         </div>
     </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/script.js"></script>
 
 </body>
