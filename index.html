@@ -4,74 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chem-Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <title>Chem Quiz</title>
 </head>
+
 <body>
-    
+
     <header>
-        <div id="score">Your score: </div>
-        <h1>Chemistry Rules!</h1>
-        <div>Time remaining: <span id="timer">10 </span> seconds</div>
-
-
+        <div class="header text" id="currentScore">Your Current Score: </div>
+        <h1 class="header">Chemistry Rules!</h1>
+        <div class="header text" id="timer">Time Remaining:</div>
     </header>
+    
+    <div id="wrapper">
 
-    <div class = "wrapper">
-        <div class = "container">
+        <div class="container">
 
-            <div class="visible" id="intro">
-                <h2>Take the Chem-Quiz</h2>
-                <div class="text" id="description">
-                    <p>Brief introduction of quiz</p>
-                </div>
-                <div>
-                    <button class="buttons" id="start">Start</button>
-                </div>
+            <div class="box" id="begin-quiz">
+                <h2 class="box-top">Take the Chem-Quiz</h2>
+                <div class="text" id="intro"></div>
+                <button class="buttons" id="start">Start</button>
+
             </div>
 
-            <div class="visible" id="question">
-                <h2 id="question-text">question</h2>
-                <div id="answer-buttons">
-                    <button data-value="1" class="buttons answers" id='1'></button>
-                    <button data-value="2" class="buttons answers" id='2'></button>
-                    <button data-value="3" class="buttons answers" id='3'></button>
-                    <button data-value="4" class="buttons answers" id='4'></button>
-                </div>
-                <div class="text">
-                    <p id="response">Correct!</p>
-                </div>
+            <div class="box hide" id="questions">
+                <h2 class="box-top" id="question-text">Question</h2>
+                <button class="buttons answers" id="A"> A:  </button>
+                <button class="buttons answers" id="B"> B:  </button>
+                <button class="buttons answers" id="C"> C:  </button>
+                <button class="buttons answers" id="D"> D:  </button>
+                <div class="text hide" id="correct">Correct!</div>
             </div>
 
-            <div class="visible" id="all-done">
-                <h2>All done!</h2>
-                <div class="text" id="score">
-                    <p>Your final score is </p>
-                </div>
-                <div id="input-initials">
+            <div class="box hide" id="all-done">
+                <h2 class="box-top">All Done!</h2>
+                <div class="text" id="yourScore">Your final score is: </div>
+                <div class="text" id="input-initials">
                     <p>Enter your initials: </p>
                     <input type="text" id="initials">
                     <div>
-                        <button class="buttons" id="submit">Submit</button>
+                        <button class="buttons" id="submit-initials">Submit</button>
                     </div>
                 </div>
             </div>
 
-            <div class="visible" id="high-scores">
-                <h2>Highscores</h2>
-                <div class="text" id="scores-list">
-                    <p>list of scores</p>
-                </div>
+            <div class="box hide" id="highscores">
+                <h2 class="box-top">High Scores</h2>
+                <ul class="text" id="score-list"></ul>
                 <div>
-                    <button class="buttons" id="go-back">Go Back</button>
-                    <button class="buttons" id="clear">Clear Highscores</button>
+                    <button class="buttons" id="go-back">Try Again!</button>
+                    <button class="buttons" id="clear-scores">Clear High Scores</button>
                 </div>
             </div>
-   
+
         </div>
     </div>
 
-<script src="script.js"></script>
+    <script src="./assets/script.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,84 @@
+
+header {
+    background-color: rgb(77, 105, 133);
+    color: lavenderblush;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+}
+
+/* give header more flex instead of its own style */
+.header {
+    padding: 0px 40px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.text {
+    font-size: 20px;
+}
+
+#wrapper {
+    background-color: rgb(131, 159, 184);
+}
+
+.container {
+    background-color: rgb(200, 220, 238);
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    max-width: 80%;
+    border: solid 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+button {
+    background-color: rgb(8, 46, 85);
+    color: white;
+}
+
+button:hover {
+    background-color: rgb(77, 105, 133);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: 5px;
+}
+
+#questions {
+    padding: 20px;
+}
+
+#correct {
+    font-size: 24px;
+    font-style: italic;
+    padding-top: 20px;
+    border-top: solid 2px black;
+}
+
+
