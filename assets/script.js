@@ -43,7 +43,9 @@ const questionBank = [
 
 const startBox = document.getElementById("begin-quiz");
 const questionBox = document.getElementById("questions");
+const yourScore = document.getElementById("your-score")
 const initialsBox = document.getElementById("all-done")
+const initials = document.getElementById("initials")
 const highScoresBox = document.getElementById("highscores")
 
 
@@ -65,9 +67,10 @@ function btnClick(e) {
     renderQuestion();  
 
   } else if (button === 'submit-initials') {
-    // run getScore function, post scores from local storage
+    // post scores from local storage
     initialsBox.setAttribute("class", "hide");
     highScoresBox.setAttribute("class", "show");
+    postInitials();
 
   } else if (button === 'go-back') {
     highScoresBox.setAttribute("class", "hide");
@@ -123,47 +126,50 @@ function checkAnswer(e) {
   if (answer !== correctAnswer) {
     answerCorrect.setAttribute('class', 'show');
     answerCorrect.textContent= "Incorrect.";
-  // run score funtion}
-    setTimeout(function() {
-    answerCorrect.setAttribute('class', 'hide');
-    }, 2000);
+    // **still need incorrect answer penalty**
   
     } else {
     answerCorrect.setAttribute('class', 'show');
     answerCorrect.textContent= "Correct!";
-    // update score
-
-    setTimeout(function() {
-    answerCorrect.setAttribute('class', 'hide');
-    }, 2000);
   }
 
   currentQuestion++;
 
   if (currentQuestion < lastQuestion) {
     renderQuestion(currentQuestion);
+
   } else {
+    // end quiz and calculate score
     setTimeout(function() {
     questionBox.setAttribute("class", "hide");
     initialsBox.setAttribute("class", "show");
+
+    // 2 sec buffer to make up for 2 sec results display
+    // render final score to screen
+    let finalScore = countdown + 2;
+    yourScore.textContent = " " + finalScore + " points";
     }, 2000);
   }
 }
 
+
+// countdown timer function
 const timerEl = document.querySelector("#timer");
-
 let countdown = 100;
-
 
 function setTimer() {
   let timerInterval = setInterval(function() {
     countdown--;
     timerEl.textContent = countdown + " seconds";
-    
+        
     if (countdown === 0) {
       clearInterval(timerInterval);
     }
   }, 1000);
 }
 
-
+// collect initials and score and send to local storage
+function postInitials() {
+  localStorage.setItem("initials", initials.value)
+  console.log(initials.value)
+}

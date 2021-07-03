@@ -20,14 +20,14 @@
     <div id="wrapper">
 
         <div class="container">
-            <!-- start screen -->
+            <!-- Start screen -->
             <div class="box" id="begin-quiz">
                 <h2 class="box-top">Take the Chem-Quiz</h2>
-                <div class="text" id="intro">How much do you remember from high school chemistry? Challenge yourself to answer these four questions about the structure of matter in less than 100 seconds. It's time to beat the clock!</div>
+                <div class="text" id="intro">How much do you remember from high school chemistry? Challenge yourself to answer these four questions about the structure of matter in less than 100 seconds. But be careful. If you answer a question incorrectly, 10 seconds will be deducted from your time. Good Luck!</div>
                 <button class="buttons" id="start">Start</button>
             </div>
 
-            <!-- question screen -->
+            <!-- Question screen -->
             <div class="box hide" id="questions">
                 <h2 class="box-top" id="question-text">Question</h2>
                 <button class="buttons answers" id="A"></button>
@@ -40,7 +40,7 @@
             <!-- All-Done screen -->
             <div class="box hide" id="all-done">
                 <h2 class="box-top">All Done!</h2>
-                <div class="text" id="yourScore">Your final score is: </div>
+                <div class="text">Your final score is:<span id="your-score"></span></div>
                 <div class="text" id="input-initials">
                     <p>Enter your initials: </p>
                     <input type="text" id="initials">
