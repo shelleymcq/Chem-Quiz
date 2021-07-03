@@ -88,7 +88,7 @@ const answer4 = document.getElementById('D');
 // Variables to use in the loop to select new questions.
 const lastQuestion = questionBank.length;
 let currentQuestion = 0;
-let correctAnswer = questionBank[currentQuestion].correct;
+
 
 const answerA = questionBank[1];
 const answerB = questionBank[2];
@@ -114,8 +114,8 @@ answerBtns.forEach(function(ans) {
 const answerCorrect = document.getElementById("correct");
 
 function checkAnswer(e) {
-  console.log(currentQuestion)
 
+  let correctAnswer = questionBank[currentQuestion].correct;
   let answer = (e.target.getAttribute('id'))
 
   if (answer !== correctAnswer) {
@@ -139,10 +139,11 @@ function checkAnswer(e) {
   currentQuestion++;
 
   if (currentQuestion < lastQuestion) {
-    console.log(currentQuestion);
     renderQuestion(currentQuestion);
   } else {
+    setTimeout(function() {
     questionBox.setAttribute("class", "hide");
     initialsBox.setAttribute("class", "show");
+    }, 2000);
   }
 }
