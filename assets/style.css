@@ -75,10 +75,12 @@ button:hover {
 }
 
 #correct {
+    display: block;
     font-size: 24px;
     font-style: italic;
     padding-top: 20px;
     border-top: solid 2px black;
+
 }
 
 

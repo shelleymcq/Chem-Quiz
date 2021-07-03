@@ -58,8 +58,10 @@ function btnClick(e) {
   let button = (e.target.getAttribute('id'))
   
   if (button === 'start') {
+    // on start button click begin the countdown timer and render the first question
     startBox.setAttribute("class", "hide");
     questionBox.setAttribute("class", "show");
+    setTimer()
     renderQuestion();  
 
   } else if (button === 'submit-initials') {
@@ -147,3 +149,21 @@ function checkAnswer(e) {
     }, 2000);
   }
 }
+
+const timerEl = document.querySelector("#timer");
+
+let countdown = 100;
+
+
+function setTimer() {
+  let timerInterval = setInterval(function() {
+    countdown--;
+    timerEl.textContent = countdown + " seconds";
+    
+    if (countdown === 0) {
+      clearInterval(timerInterval);
+    }
+  }, 1000);
+}
+
+
